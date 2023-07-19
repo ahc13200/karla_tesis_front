@@ -4,11 +4,7 @@
     import {ref, onMounted, onBeforeMount} from 'vue'
     import axios from '../../../axios/axios.ts'
     import {workersStore} from "./../../../stores/workers.store.ts";
-
-
-    var readTextFile = require('read-text-file');
-    let contentsPromise = readTextFile.read('D:/AMANDA TRABAJO/PROYECTOS/Proyecto TransO/coordenadas.txt');
-
+    import ChooseFile from "./ChooseFile.vue";
     const workers = workersStore()
 
     const zoom = ref(14)
@@ -16,10 +12,10 @@
 </script>
 
 <template>
-    <div class="bg-white">
-        {{contentsPromise}}
-    </div>
     <div style="height: 600px" class="w-full">
+        <div class="bg-white">
+            <ChooseFile/>
+        </div>
         <l-map
                 ref="map"
                 v-model:zoom="zoom"
