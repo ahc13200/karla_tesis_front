@@ -5,6 +5,10 @@
     import axios from '../../../axios/axios.ts'
     import {workersStore} from "./../../../stores/workers.store.ts";
 
+
+    var readTextFile = require('read-text-file');
+    let contentsPromise = readTextFile.read('D:/AMANDA TRABAJO/PROYECTOS/Proyecto TransO/coordenadas.txt');
+
     const workers = workersStore()
 
     const zoom = ref(14)
@@ -12,6 +16,9 @@
 </script>
 
 <template>
+    <div class="bg-white">
+        {{contentsPromise}}
+    </div>
     <div style="height: 600px" class="w-full">
         <l-map
                 ref="map"
@@ -26,8 +33,8 @@
             />
             <l-marker v-for="(item,index) in workers.workers" :key="index" :lat-lng="item.workers_location">
                 <l-icon
-                        :icon-size= [50,50]
-                        :icon-anchor= [3,3]
+                        :icon-size=[50,50]
+                        :icon-anchor=[3,3]
                         icon-url="/worker.png"
                 />
                 <l-popup>
@@ -40,8 +47,8 @@
 
             <l-marker v-for="(item,index) in workers.stations" :key="index" :lat-lng="item.station">
                 <l-icon
-                        :icon-size= [35,35]
-                        :icon-anchor= [3,3]
+                        :icon-size=[35,35]
+                        :icon-anchor=[3,3]
                         icon-url="/bus.png"
                 />
                 <l-popup>
