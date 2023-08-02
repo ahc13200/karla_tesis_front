@@ -10,7 +10,7 @@
         const reader = new FileReader();
         if (file.value.name.includes(".xpress") || file.value.name.includes(".txt")) {
             reader.onload = (res) => {
-                content.value = res.target.result;
+                content.value = res.target.result.split(",");
             };
             reader.onerror = (err) => console.log(err);
             reader.readAsText(file.value);
