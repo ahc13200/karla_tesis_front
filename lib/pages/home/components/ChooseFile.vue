@@ -8,7 +8,7 @@
     const readFile = () =>{
         file.value = doc.value.files[0];
         const reader = new FileReader();
-        if (file.value.name.includes(".txt")) {
+        if (file.value.name.includes(".xpress")) {
             reader.onload = (res) => {
                 content.value = res.target.result;
             };
