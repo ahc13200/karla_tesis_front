@@ -28,7 +28,7 @@
         content.value = res
           .target!.result!.split('\r\n')
           .filter((e, index) => index > 1 && e != '')
-          .map((e) => e.replace(' ', ','))
+          .map((e) => e.trim().replace(' ', ','))
 
         /*Cojo la cantidad de elementos de cada arreglo*/
         stopsCounts.value = header.value[0]
@@ -43,8 +43,9 @@
           const array_coordinate = e.split(',')
           return { lng: parseFloat(array_coordinate[0]), lat: parseFloat(array_coordinate[1]) }
         })
-        workers.students = content.value.slice(-studentsCounts.value).map((e) => {
+        workers.students = content.value.slice(-studentsCounts.value).map((e, index) => {
           const array_coordinate = e.split(',')
+          if (index == 41) console.log(array_coordinate)
           return { lng: parseFloat(array_coordinate[0]), lat: parseFloat(array_coordinate[1]) }
         })
       }
