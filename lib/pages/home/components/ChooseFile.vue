@@ -45,7 +45,6 @@
         })
         workers.students = content.value.slice(-studentsCounts.value).map((e, index) => {
           const array_coordinate = e.split(',')
-          if (index == 41) console.log(array_coordinate)
           return { lng: parseFloat(array_coordinate[0]), lat: parseFloat(array_coordinate[1]) }
         })
       }
